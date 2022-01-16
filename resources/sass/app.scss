@@ -1,0 +1,68 @@
+// highlighters
+$lightBlue: #A6C9FF;
+$darkBlue: #6CA7FF;
+$lightOrange: #FFDBA6;
+$darkOrange: #FFC46B;
+
+// links
+$hyperlink: #2F80ED;
+$hyperlinkHover: #004097;
+
+// gradients
+$white: #FFFFFF;
+$black: #000000;
+$lightGrey: #BEBEBE;
+$darkGrey: #515151;
+
+// misc
+$overlay: rgba(0,0,0,0.50);
+$boxShadow: 0 5px 11px rgba(36, 37, 38, 0.08); 
+
+// global styles
+body {
+    font-family: 'Gothic A1', sans-serif;
+}
+h1 {
+    font-size: 48px;
+    color: $darkGrey;
+    text-align: center;
+    text-transform: uppercase;
+}
+h2 {
+    font-size: 36px;
+    color: $darkGrey;
+    text-transform: uppercase;
+}
+h3 {
+    font-size: 36px;
+    color: $black;
+}
+p {
+    font-size: 18px;
+    color: $black;
+}
+a {
+    color: $hyperlink;
+    font-size: 24px;
+    text-decoration: underline;
+}
+a:hover {
+    color: $hyperlinkHover;
+}
+button {
+    border-radius: 15px;
+    color: $black;
+
+}
+button.primary-button {
+    color: $lightBlue;
+}
+button.primary-button:hover {
+    color:$darkBlue;
+}
+button.secondary-button {
+    color: $lightOrange;
+}
+button.secondary-button:hover {
+    color:$darkOrange;
+}

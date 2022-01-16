@@ -1,0 +1,58 @@
+body {
+  font-family: "Gothic A1", sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+  color: #515151;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 36px;
+  color: #515151;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 36px;
+  color: #000000;
+}
+
+p {
+  font-size: 18px;
+  color: #000000;
+}
+
+a {
+  color: #2F80ED;
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #004097;
+}
+
+button {
+  border-radius: 15px;
+  color: #000000;
+}
+
+button.primary-button {
+  color: #A6C9FF;
+}
+
+button.primary-button:hover {
+  color: #6CA7FF;
+}
+
+button.secondary-button {
+  color: #FFDBA6;
+}
+
+button.secondary-button:hover {
+  color: #FFC46B;
+}
+
