@@ -28,11 +28,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Base_BaseModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Base/BaseModal */ "./resources/js/components/Base/BaseModal.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     BaseModal: _Base_BaseModal__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)({
+    'company': function company(state) {
+      return state.company;
+    }
+  })),
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapMutations)(['updateCompany'])), {}, {
+    updateName: function updateName(e) {
+      this.updateCompany(_objectSpread(_objectSpread({}, this.company), {}, {
+        name: e.target.value
+      }));
+    },
+    updateLocation: function updateLocation(e) {
+      this.updateCompany(_objectSpread(_objectSpread({}, this.company), {}, {
+        location: e.target.value
+      }));
+    }
+  })
 });
 
 /***/ }),
@@ -191,7 +216,10 @@ var _hoisted_1 = /*#__PURE__*/_withScopeId(function () {
   );
 });
 
-var _hoisted_2 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_2 = ["value"];
+var _hoisted_3 = ["value"];
+
+var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "footer"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
@@ -211,21 +239,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "add-company"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-        "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return _ctx.name = $event;
-        }),
-        placeholder: "Company name"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return _ctx.location = $event;
-        }),
-        placeholder: "Headquarter city, state"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.location]]), _hoisted_2];
+      return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        value: _ctx.company.name,
+        placeholder: "Company name",
+        onInput: _cache[0] || (_cache[0] = function () {
+          return $options.updateName && $options.updateName.apply($options, arguments);
+        })
+      }, null, 40
+      /* PROPS, HYDRATE_EVENTS */
+      , _hoisted_2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        value: _ctx.company.location,
+        placeholder: "Headquarter city, state",
+        onInput: _cache[1] || (_cache[1] = function () {
+          return $options.updateLocation && $options.updateLocation.apply($options, arguments);
+        })
+      }, null, 40
+      /* PROPS, HYDRATE_EVENTS */
+      , _hoisted_3), _hoisted_4];
     }),
     _: 1
     /* STABLE */
@@ -449,7 +479,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "div.top-right[data-v-6647123a] {\n  display: flex;\n  justify-content: flex-end;\n  margin: 2rem;\n}\ndiv.companies-list-wrapper[data-v-6647123a] {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  margin: auto;\n}\n@media (min-width: 1300) {\ndiv.companies-list-wrapper[data-v-6647123a] {\n    max-width: 1300px;\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "div.top-right[data-v-6647123a] {\n  display: flex;\n  justify-content: flex-end;\n  margin: 2rem;\n}\ndiv.companies-list-wrapper[data-v-6647123a] {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  margin: auto;\n}\n@media (min-width: 1440px) {\ndiv.companies-list-wrapper[data-v-6647123a] {\n    max-width: 1400px;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

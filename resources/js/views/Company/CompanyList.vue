@@ -52,9 +52,9 @@ div.companies-list-wrapper {
     margin: auto;
 }
 
-@media (min-width: 1300) {
+@media (min-width: 1440px) {
     div.companies-list-wrapper {
-        max-width: 1300px;
+        max-width: 1400px;
     }
 }
 </style>

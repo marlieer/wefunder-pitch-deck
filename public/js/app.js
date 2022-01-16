@@ -19548,13 +19548,25 @@ __webpack_require__.r(__webpack_exports__);
 
 var state = function state() {
   return {
-    companies: []
+    companies: [],
+    company: {
+      name: null,
+      website: null,
+      location: null,
+      twitter: null,
+      facebook: null,
+      instagram: null,
+      linked_in: null
+    }
   };
 };
 
 var mutations = {
   setCompanies: function setCompanies(state, payload) {
     state.companies = payload;
+  },
+  updateCompany: function updateCompany(state, payload) {
+    state.company = payload;
   }
 };
 var actions = {
