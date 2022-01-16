@@ -19543,13 +19543,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 var state = function state() {
   return {
     companies: [],
     company: {
+      id: null,
       name: null,
       website: null,
       location: null,
@@ -19557,6 +19567,10 @@ var state = function state() {
       facebook: null,
       instagram: null,
       linked_in: null
+    },
+    pitchDeck: {
+      file: null,
+      title: null
     }
   };
 };
@@ -19567,17 +19581,38 @@ var mutations = {
   },
   updateCompany: function updateCompany(state, payload) {
     state.company = payload;
+  },
+  updatePitchDeck: function updatePitchDeck(state, payload) {
+    state.pitchDeck = payload;
   }
 };
 var actions = {
   getCompanies: function getCompanies(_ref) {
     var commit = _ref.commit;
-    axios.get('/api/companies').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/companies').then(function (res) {
       return commit('setCompanies', res.data);
+    });
+  },
+  createCompany: function createCompany(_ref2) {
+    var commit = _ref2.commit,
+        state = _ref2.state;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/company', state.company).then(function (res) {
+      return commit('updateCompany', _objectSpread(_objectSpread({}, state.company), {}, {
+        id: res.data.id
+      }));
+    });
+  },
+  createPitchDeck: function createPitchDeck(_ref3) {
+    var commit = _ref3.commit,
+        state = _ref3.state;
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/pitch-deck', _objectSpread(_objectSpread({}, state.pitchDeck), {}, {
+      id: state.company.id
+    })).then(function () {
+      return commit('updatePitchDeck', {});
     });
   }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
   state: state,
   mutations: mutations,
   actions: actions

@@ -6,7 +6,7 @@
     
     <div class="footer">
         <a href="#" class="button cancel-button">Cancel</a>
-        <button class="primary-button">Next</button>
+        <a href="#add-pitch-deck" class="button primary-button">Next</a>
     </div>
 
 </BaseModal>

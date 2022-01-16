@@ -20,6 +20,8 @@
         position: relative;
         top: 0;
         right: 0;
+        width: 100%;
+        height: 100%;
     }
     .overlay {
         visibility: hidden;
@@ -32,7 +34,6 @@
         align-items: center;
         justify-content: center;
         background: rgba(0, 0, 0, .5);
-        transition: opacity .3s;
         opacity: 0;
         z-index: 99;
     }

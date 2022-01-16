@@ -1,13 +1,13 @@
 <template>
 <div>
-    <h2>Upload files</h2>
     <file-pond
         name="image"
+        class="file-uploader"
         ref="pond"
-        label-idle="Click to choose image, or drag here..."
+        label-idle="Drag files here or click to choose..."
         label-file-type-not-allowed="Accepted file types are powerpoint or pdf"
         :accepted-file-types="acceptedFileTypes"
-        server="/api/pitch-deck"/>
+        @addfile="uploadFile"/>
 </div>
 </template>
 <script>
@@ -27,8 +27,19 @@ export default {
                 "application/pdf", 
                 "application/vnd.ms-powerpoint", 
                 "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-            ] 
+            ],
+            file: null
+        }
+    },
+    methods: {
+        uploadFile() {
+            this.$emit('file-upload', this.$refs.pond.getFile())
         }
     }
 }
 </script>
+<style scoped>
+.file-uploader:hover{
+    cursor:pointer;
+}
+</style>

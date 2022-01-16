@@ -1,9 +1,11 @@
+import axios from 'axios'
 import { createStore } from 'vuex'
 
 const state = () => {
     return {
         companies: [],
         company: {
+            id: null,
             name: null,
             website: null,
             location: null,
@@ -11,7 +13,11 @@ const state = () => {
             facebook: null,
             instagram: null,
             linked_in: null
-        }
+        },
+        pitchDeck: {
+            file: null,
+            title: null
+        },
     }
 }
 
@@ -21,6 +27,9 @@ const mutations = {
     },
     updateCompany(state, payload) {
         state.company = payload
+    },
+    updatePitchDeck(state, payload) {
+        state.pitchDeck = payload
     }
 }
 
@@ -28,6 +37,14 @@ const actions = {
     getCompanies({commit}) {
         axios.get('/api/companies')
             .then((res) => commit('setCompanies', res.data));
+    },
+    createCompany({commit, state}) {
+        return axios.post('/api/company', state.company)
+            .then((res) => commit('updateCompany', { ...state.company, id: res.data.id }));
+    },
+    createPitchDeck({commit, state}) {
+        return axios.post('/api/pitch-deck', { ...state.pitchDeck, id: state.company.id})
+            .then(() => commit('updatePitchDeck', {}));
     }
 }
 

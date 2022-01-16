@@ -27,8 +27,8 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
-        Company::create($request->all());
-        return response()->json(['created' => true]);
+        $company = Company::create($request->all());
+        return response()->json(['created' => true, 'id' => $company->id]);
     }
 
     /**
