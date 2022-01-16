@@ -16,12 +16,11 @@ class CreatePitchDeckTable extends Migration
         Schema::create('pitch_decks', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('company_id');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('file');
-            $table->string('file_type');
             $table->timestamps();
 
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

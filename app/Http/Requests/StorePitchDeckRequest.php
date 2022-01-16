@@ -13,7 +13,7 @@ class StorePitchDeckRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StorePitchDeckRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'file'          => 'required|file',
+            'company_id'    => 'required|exists:companies,id'
         ];
     }
 }

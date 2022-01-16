@@ -25,7 +25,7 @@ class Company extends Model
         return $this->hasMany(Highlight::class);
     }
 
-    public function pitchDeck()
+    public function pitchDecks()
     {
         return $this->hasMany(PitchDeck::class);
     }

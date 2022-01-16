@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\PitchDeck;
 use App\Http\Requests\StorePitchDeckRequest;
 use App\Http\Requests\UpdatePitchDeckRequest;
-use App\Models\PitchDeck;
 
 class PitchDeckController extends Controller
 {
@@ -36,7 +37,10 @@ class PitchDeckController extends Controller
      */
     public function store(StorePitchDeckRequest $request)
     {
-        //
+        $company = Company::find($request->company_id);
+        $path = $request->file('file')->store('pitchdecks');
+        $company->pitchDecks()->save(new PitchDeck(['file' => $path]));
+        return response()->json(['created' => true]);
     }
 
     /**
