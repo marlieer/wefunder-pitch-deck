@@ -53,17 +53,24 @@ a:hover {
 button {
     border-radius: 15px;
     color: $black;
-
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-family: 'Gothic A1';
+    border: none;
+    font-size: 24px;
+}
+button:hover {
+    cursor: pointer;
 }
 button.primary-button {
-    color: $lightBlue;
+    background-color: $lightBlue;
 }
 button.primary-button:hover {
-    color:$darkBlue;
+    background-color:$darkBlue;
 }
 button.secondary-button {
-    color: $lightOrange;
+    background-color: $lightOrange;
 }
 button.secondary-button:hover {
-    color:$darkOrange;
+    background-color:$darkOrange;
 }

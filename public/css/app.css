@@ -39,21 +39,30 @@ a:hover {
 button {
   border-radius: 15px;
   color: #000000;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-family: "Gothic A1";
+  border: none;
+  font-size: 24px;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 button.primary-button {
-  color: #A6C9FF;
+  background-color: #A6C9FF;
 }
 
 button.primary-button:hover {
-  color: #6CA7FF;
+  background-color: #6CA7FF;
 }
 
 button.secondary-button {
-  color: #FFDBA6;
+  background-color: #FFDBA6;
 }
 
 button.secondary-button:hover {
-  color: #FFC46B;
+  background-color: #FFC46B;
 }
 
