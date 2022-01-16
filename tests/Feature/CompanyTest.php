@@ -30,6 +30,6 @@ class CompanyTest extends TestCase
         $companies = Company::factory()->count(10)->create();
         $response = $this->getJson(route('company.index'));
         $response->assertStatus(200)
-            ->assertExactJson($companies->toArray());
+            ->assertJson($companies->toArray());
     }
 }

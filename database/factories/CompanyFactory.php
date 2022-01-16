@@ -19,7 +19,7 @@ class CompanyFactory extends Factory
         return [
             'name'      => $company,
             'website'   => 'http://' . $companySnakeCase . '.com',
-            'location'  => $this->faker->address(),
+            'location'  => $this->faker->city() . ', ' . $this->faker->stateAbbr(),
             'twitter'   => 'https://twitter.com/' . $companySnakeCase,
             'facebook'  => 'https://facebook.com/' . $companySnakeCase,
             'instagram' => 'https://instagram.com/' . $companySnakeCase,
