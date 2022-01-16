@@ -18,7 +18,7 @@ class CompanyFactory extends Factory
         $companySnakeCase = Str::snake($company);
         return [
             'name'      => $company,
-            'website'   => 'http://' . $companySnakeCase,
+            'website'   => 'http://' . $companySnakeCase . '.com',
             'location'  => $this->faker->address(),
             'twitter'   => 'https://twitter.com/' . $companySnakeCase,
             'facebook'  => 'https://facebook.com/' . $companySnakeCase,

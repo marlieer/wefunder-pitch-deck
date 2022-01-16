@@ -13,7 +13,7 @@ class StoreCompanyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class StoreCompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'      => 'required|string|max:255',
+            'website'   => 'nullable|string|max:255',
+            'location'  => 'nullable|string|max:255',
+            'twitter'   => 'nullable|string|max:255',
+            'facebook'  => 'nullable|string|max:255',
+            'instagram' => 'nullable|string|max:255',
+            'linked_in' => 'nullable|string|max:255',            
         ];
     }
 }
