@@ -19584,6 +19584,21 @@ var mutations = {
   },
   updatePitchDeck: function updatePitchDeck(state, payload) {
     state.pitchDeck = payload;
+  },
+  clearStore: function clearStore(state) {
+    state.pitchDeck = {
+      file: null,
+      title: null
+    }, state.company = {
+      id: null,
+      name: null,
+      website: null,
+      location: null,
+      twitter: null,
+      facebook: null,
+      instagram: null,
+      linked_in: null
+    };
   }
 };
 var actions = {
@@ -19608,7 +19623,7 @@ var actions = {
     return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/pitch-deck', _objectSpread(_objectSpread({}, state.pitchDeck), {}, {
       id: state.company.id
     })).then(function () {
-      return commit('updatePitchDeck', {});
+      return commit('clearStore');
     });
   }
 };

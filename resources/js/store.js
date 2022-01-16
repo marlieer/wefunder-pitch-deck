@@ -30,6 +30,22 @@ const mutations = {
     },
     updatePitchDeck(state, payload) {
         state.pitchDeck = payload
+    },
+    clearStore(state) {
+        state.pitchDeck = {
+            file: null,
+            title: null
+        },
+        state.company = {
+            id: null,
+            name: null,
+            website: null,
+            location: null,
+            twitter: null,
+            facebook: null,
+            instagram: null,
+            linked_in: null
+        }
     }
 }
 
@@ -44,7 +60,7 @@ const actions = {
     },
     createPitchDeck({commit, state}) {
         return axios.post('/api/pitch-deck', { ...state.pitchDeck, id: state.company.id})
-            .then(() => commit('updatePitchDeck', {}));
+            .then(() => commit('clearStore'));
     }
 }
 
