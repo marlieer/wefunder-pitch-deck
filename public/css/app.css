@@ -11,14 +11,16 @@ h1 {
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 30px;
   color: #515151;
   text-transform: uppercase;
+  font-weight: 400;
 }
 
 h3 {
   font-size: 36px;
   color: #000000;
+  font-weight: 400;
 }
 
 p {
@@ -39,11 +41,11 @@ a:hover {
 button {
   border-radius: 15px;
   color: #000000;
-  padding: 1rem 2rem;
+  padding: 0.7rem 2rem;
   font-weight: bold;
   font-family: "Gothic A1";
   border: none;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 button:hover {

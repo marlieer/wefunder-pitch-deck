@@ -3,22 +3,34 @@
         <button class="secondary-button" @click="createCompany()">Add your company</button>
     </div>
     <h1>Company Profiles</h1>
-    <div class="companies-list">
+    <div class="companies-list-wrapper">
         <CompanyCard v-for="company in companies" :key="company.id" :company="company"/>
     </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import CompanyCard from '../../components/Company/CompanyCard.vue'
 export default {
+    components: {
+        CompanyCard
+    },
     data() {
+        return {
 
+        }
     },
     computed: {
         ...mapState([
             'companies'
         ]),
     },
+    created() {
+        this.getCompanies()
+    },
     methods: {
+        ...mapActions([
+            'getCompanies'
+        ]),
         createCompany() {
             window.location.href = "#add-company"
         }
@@ -29,6 +41,18 @@ export default {
  div.top-right {
      display: flex;
      justify-content: flex-end;
+     margin: 2rem;
  }
+div.companies-list-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+}
 
+@media (min-width: 1300) {
+    div.companies-list-wrapper {
+        max-width: 1300px;
+    }
+}
 </style>

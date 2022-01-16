@@ -11,12 +11,14 @@ $hyperlinkHover: #004097;
 // gradients
 $white: #FFFFFF;
 $black: #000000;
-$lightGrey: #BEBEBE;
+$lightGrey: #E5E5E5;
+$medGrey: #BEBEBE;
 $darkGrey: #515151;
 
 // misc
 $overlay: rgba(0,0,0,0.50);
 $boxShadow: 0 5px 11px rgba(36, 37, 38, 0.08); 
+$borderRadius: 10px;
 
 // global styles
 body {
@@ -30,13 +32,15 @@ h1 {
     letter-spacing: 0.14em;
 }
 h2 {
-    font-size: 36px;
+    font-size: 30px;
     color: $darkGrey;
     text-transform: uppercase;
+    font-weight: 400;
 }
 h3 {
     font-size: 36px;
     color: $black;
+    font-weight: 400;
 }
 p {
     font-size: 18px;
@@ -53,11 +57,11 @@ a:hover {
 button {
     border-radius: 15px;
     color: $black;
-    padding: 1rem 2rem;
+    padding: 0.7rem 2rem;
     font-weight: bold;
     font-family: 'Gothic A1';
     border: none;
-    font-size: 24px;
+    font-size: 18px;
 }
 button:hover {
     cursor: pointer;
