@@ -1,7 +1,7 @@
 export default {
   routes: [
     { 
-        path: '/company/{id}', 
+        path: '/company/:id', 
         component:  () => import('./views/Company/CompanyShow'),
         name: 'company'
     }, 

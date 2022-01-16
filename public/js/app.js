@@ -19516,7 +19516,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   routes: [{
-    path: '/company/{id}',
+    path: '/company/:id',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_views_Company_CompanyShow_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./views/Company/CompanyShow */ "./resources/js/views/Company/CompanyShow.vue"));
     },
@@ -19558,6 +19558,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var state = function state() {
   return {
     companies: [],
+    showCompany: {},
     company: {
       id: null,
       name: null,
@@ -19578,6 +19579,9 @@ var state = function state() {
 var mutations = {
   setCompanies: function setCompanies(state, payload) {
     state.companies = payload;
+  },
+  setShowCompany: function setShowCompany(state, payload) {
+    state.showCompany = payload;
   },
   updateCompany: function updateCompany(state, payload) {
     state.company = payload;
@@ -19608,18 +19612,24 @@ var actions = {
       return commit('setCompanies', res.data);
     });
   },
-  createCompany: function createCompany(_ref2) {
-    var commit = _ref2.commit,
-        state = _ref2.state;
+  getCompany: function getCompany(_ref2, id) {
+    var commit = _ref2.commit;
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/company/".concat(id)).then(function (res) {
+      return commit('setShowCompany', res.data);
+    });
+  },
+  createCompany: function createCompany(_ref3) {
+    var commit = _ref3.commit,
+        state = _ref3.state;
     return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/company', state.company).then(function (res) {
       return commit('updateCompany', _objectSpread(_objectSpread({}, state.company), {}, {
         id: res.data.id
       }));
     });
   },
-  createPitchDeck: function createPitchDeck(_ref3) {
-    var commit = _ref3.commit,
-        state = _ref3.state;
+  createPitchDeck: function createPitchDeck(_ref4) {
+    var commit = _ref4.commit,
+        state = _ref4.state;
     var formData = new FormData();
     formData.append("file", state.pitchDeck.file);
     formData.append("company_id", state.company.id);
