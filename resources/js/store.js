@@ -4,6 +4,7 @@ import { createStore } from 'vuex'
 const state = () => {
     return {
         companies: [],
+        showCompany: {},
         company: {
             id: null,
             name: null,
@@ -24,6 +25,9 @@ const state = () => {
 const mutations = {
     setCompanies(state, payload) {
         state.companies = payload
+    },
+    setShowCompany(state, payload) {
+        state.showCompany = payload
     },
     updateCompany(state, payload) {
         state.company = payload
@@ -53,6 +57,10 @@ const actions = {
     getCompanies({commit}) {
         axios.get('/api/companies')
             .then((res) => commit('setCompanies', res.data));
+    },
+    getCompany({commit}, id) {
+        axios.get(`/api/company/${id}`)
+            .then((res) => commit('setShowCompany', res.data));
     },
     createCompany({commit, state}) {
         return axios.post('/api/company', state.company)
