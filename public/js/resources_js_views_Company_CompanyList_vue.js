@@ -12,7 +12,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['company']
+  props: ['company'],
+  methods: {
+    goToCompany: function goToCompany(id) {
+      this.$router.push({
+        name: 'company',
+        params: {
+          id: id
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -82,9 +92,9 @@ var _hoisted_2 = {
 };
 
 var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "primary-button"
-  }, "Learn More", -1
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "list-continues"
+  }, "... and the list goes on", -1
   /* HOISTED */
   );
 });
@@ -100,7 +110,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     );
   }), 256
   /* UNKEYED_FRAGMENT */
-  ))]), _hoisted_3]);
+  ))]), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "primary-button",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.goToCompany($props.company.id);
+    })
+  }, "Learn More")]);
 }
 
 /***/ }),
@@ -175,7 +190,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-52548a40] {\n  font-family: \"Gothic A1\", sans-serif;\n}\nh1[data-v-52548a40] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-52548a40] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-52548a40] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-52548a40] {\n  font-size: 18px;\n  color: #000000;\n}\na[data-v-52548a40] {\n  color: #2F80ED;\n  font-size: 24px;\n  text-decoration: underline;\n}\na[data-v-52548a40]:hover {\n  color: #004097;\n}\nbutton[data-v-52548a40] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n}\nbutton[data-v-52548a40]:hover {\n  cursor: pointer;\n}\nbutton.primary-button[data-v-52548a40] {\n  background-color: #A6C9FF;\n}\nbutton.primary-button[data-v-52548a40]:hover {\n  background-color: #6CA7FF;\n}\nbutton.secondary-button[data-v-52548a40] {\n  background-color: #FFDBA6;\n}\nbutton.secondary-button[data-v-52548a40]:hover {\n  background-color: #FFC46B;\n}\nh2[data-v-52548a40] {\n  margin-bottom: 0;\n}\np.company-location[data-v-52548a40] {\n  margin-top: 0.2rem;\n}\ndiv.company-wrapper[data-v-52548a40] {\n  border-radius: 10px;\n  border: 1px solid #E5E5E5;\n  width: 20rem;\n  padding: 1rem 2rem;\n  margin: 1.8rem 1.5rem;\n  box-shadow: 0 5px 11px rgba(36, 37, 38, 0.08);\n  position: relative;\n  height: 20rem;\n}\nbutton[data-v-52548a40] {\n  margin: auto;\n  display: flex;\n  position: absolute;\n  bottom: 2rem;\n  left: 5rem;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-52548a40] {\n  font-family: \"Gothic A1\", sans-serif;\n}\nh1[data-v-52548a40] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-52548a40] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-52548a40] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-52548a40] {\n  font-size: 18px;\n  color: #000000;\n}\na[data-v-52548a40] {\n  color: #2F80ED;\n  font-size: 24px;\n  text-decoration: underline;\n}\na[data-v-52548a40]:hover {\n  color: #004097;\n}\nbutton[data-v-52548a40] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n}\nbutton[data-v-52548a40]:hover {\n  cursor: pointer;\n}\nbutton.primary-button[data-v-52548a40] {\n  background-color: #A6C9FF;\n}\nbutton.primary-button[data-v-52548a40]:hover {\n  background-color: #6CA7FF;\n}\nbutton.secondary-button[data-v-52548a40] {\n  background-color: #FFDBA6;\n}\nbutton.secondary-button[data-v-52548a40]:hover {\n  background-color: #FFC46B;\n}\nh2[data-v-52548a40] {\n  margin-bottom: 0;\n}\np.company-location[data-v-52548a40] {\n  margin-top: 0.2rem;\n}\np.list-continues[data-v-52548a40] {\n  text-align: center;\n  font-style: italic;\n  color: #515151;\n  position: absolute;\n  bottom: 5rem;\n  left: 6rem;\n}\ndiv.company-wrapper[data-v-52548a40] {\n  border-radius: 10px;\n  border: 1px solid #E5E5E5;\n  width: 20rem;\n  padding: 1rem 2rem 9rem;\n  margin: 1.8rem 1.5rem;\n  box-shadow: 0 5px 11px rgba(36, 37, 38, 0.08);\n  position: relative;\n}\nbutton[data-v-52548a40] {\n  margin: auto;\n  display: flex;\n  position: absolute;\n  bottom: 2rem;\n  left: 6.5rem;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
