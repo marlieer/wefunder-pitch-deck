@@ -1,14 +1,14 @@
 <template>
     <div>
         <h1>{{ message }}</h1>
-        <FileUplaoder></FileUplaoder>
+        <BaseFileUploader></BaseFileUploader>
     </div>
 </template>
 <script>
-import FileUplaoder from './components/Base/FileUploader'
+import BaseFileUploader from './components/Base/BaseFileUploader'
 export default {
     components: {
-        FileUplaoder,
+        BaseFileUploader,
     },
     data() {
         return {
