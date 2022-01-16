@@ -20,5 +20,6 @@ use App\Http\Controllers\PitchDeckController;
 // company routes
 Route::post('company', [CompanyController::class, 'store'])->name('company.store'); 
 Route::get('companies', [CompanyController::class, 'index'])->name('company.index');
+Route::get('company/{company}', [CompanyController::class, 'show'])->name('company.show');
 
 Route::post('pitch-deck', [PitchDeckController::class, 'store'])->name('pitch-deck.store');

@@ -32,4 +32,13 @@ class CompanyTest extends TestCase
         $response->assertStatus(200)
             ->assertJson($companies->toArray());
     }
+
+
+    public function test_show_company()
+    {
+        $company = Company::factory()->create();
+        $response = $this->getJson(route('company.show', ['company' => $company->id]));
+        $response->assertStatus(200)
+            ->assertJson($company->toArray());
+    }
 }
