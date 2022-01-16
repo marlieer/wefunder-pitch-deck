@@ -25,7 +25,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import '../../../../resources/sass/app.scss';
+@import '../../../sass/app.scss';
 h2 {
     margin-bottom: 0;
 }

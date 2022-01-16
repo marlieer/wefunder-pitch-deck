@@ -6,13 +6,15 @@
     <div class="companies-list-wrapper">
         <CompanyCard v-for="company in companies" :key="company.id" :company="company"/>
     </div>
+    <CompanyCreate></CompanyCreate>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
 import CompanyCard from '../../components/Company/CompanyCard.vue'
+import CompanyCreate from '../../components/Company/CompanyCreate'
 export default {
     components: {
-        CompanyCard
+        CompanyCard, CompanyCreate
     },
     data() {
         return {

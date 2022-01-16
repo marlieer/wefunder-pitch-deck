@@ -28,6 +28,16 @@ p {
   color: #000000;
 }
 
+input {
+  border: 1px solid #E5E5E5;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 18px;
+  display: block;
+  margin: 1rem 0;
+  width: -webkit-fill-available;
+}
+
 a {
   color: #2F80ED;
   font-size: 24px;
@@ -38,7 +48,7 @@ a:hover {
   color: #004097;
 }
 
-button {
+button, a.button {
   border-radius: 15px;
   color: #000000;
   padding: 0.7rem 2rem;
@@ -46,25 +56,34 @@ button {
   font-family: "Gothic A1";
   border: none;
   font-size: 18px;
+  text-decoration: none;
 }
 
 button:hover {
   cursor: pointer;
 }
 
-button.primary-button {
+.primary-button {
   background-color: #A6C9FF;
 }
 
-button.primary-button:hover {
+.primary-button:hover {
   background-color: #6CA7FF;
 }
 
-button.secondary-button {
+.secondary-button {
   background-color: #FFDBA6;
 }
 
-button.secondary-button:hover {
+.secondary-button:hover {
   background-color: #FFC46B;
+}
+
+.cancel-button {
+  background-color: #E5E5E5;
+}
+
+.cancel-button:hover {
+  background-color: #BEBEBE;
 }
 

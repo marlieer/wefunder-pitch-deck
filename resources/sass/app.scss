@@ -46,6 +46,15 @@ p {
     font-size: 18px;
     color: $black;
 }
+input {
+    border: 1px solid $lightGrey;
+    border-radius: $borderRadius;
+    padding: 1rem;
+    font-size: 18px;
+    display: block;
+    margin: 1rem 0;
+    width: -webkit-fill-available;
+}
 a {
     color: $hyperlink;
     font-size: 24px;
@@ -54,7 +63,7 @@ a {
 a:hover {
     color: $hyperlinkHover;
 }
-button {
+button, a.button {
     border-radius: 15px;
     color: $black;
     padding: 0.7rem 2rem;
@@ -62,19 +71,26 @@ button {
     font-family: 'Gothic A1';
     border: none;
     font-size: 18px;
+    text-decoration: none;
 }
 button:hover {
     cursor: pointer;
 }
-button.primary-button {
+.primary-button {
     background-color: $lightBlue;
 }
-button.primary-button:hover {
+.primary-button:hover {
     background-color:$darkBlue;
 }
-button.secondary-button {
+.secondary-button {
     background-color: $lightOrange;
 }
-button.secondary-button:hover {
+.secondary-button:hover {
     background-color:$darkOrange;
+}
+.cancel-button {
+    background-color: $lightGrey;
+}
+.cancel-button:hover {
+    background-color:$medGrey;
 }
