@@ -24,6 +24,7 @@
     "dependencies": {
         "filepond": "^4.30.3",
         "filepond-plugin-file-validate-type": "^1.2.6",
-        "vue-filepond": "^7.0.2"
+        "vue-filepond": "^7.0.2",
+        "vue-router": "^4.0.12"
     }
 }
