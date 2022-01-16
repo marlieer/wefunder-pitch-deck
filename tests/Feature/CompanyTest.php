@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CompanyTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic unit test example.
      *
@@ -16,10 +18,18 @@ class CompanyTest extends TestCase
     public function test_create_company()
     {
         $company = Company::factory()->make()->toArray();
-        $response = $this->postJson('/api/company', $company);
+        $response = $this->postJson(route('company.store'), $company);
 
         $response->assertStatus(200)
             ->assertJson(['created' => true]);
         $this->assertDatabaseHas('companies', $company);
+    }
+
+    public function test_index_company() 
+    {
+        $companies = Company::factory()->count(10)->create();
+        $response = $this->getJson(route('company.index'));
+        $response->assertStatus(200)
+            ->assertExactJson($companies->toArray());
     }
 }

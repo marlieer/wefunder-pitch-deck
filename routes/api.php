@@ -17,6 +17,7 @@ use App\Http\Controllers\CompanyController;
 
 
 // company routes
-Route::post('company', [CompanyController::class, 'store']); 
+Route::post('company', [CompanyController::class, 'store'])->name('company.store'); 
+Route::get('companies', [CompanyController::class, 'index'])->name('company.index');
 
-Route::post('pitch-deck', [PitchDeckController::class, 'store']);
+Route::post('pitch-deck', [PitchDeckController::class, 'store'])->name('pitch-deck.store');
