@@ -1,6 +1,6 @@
 <template>
     <div class="top-right">
-        <button class="secondary-button" @click="createCompany()">Add your company</button>
+        <a href="#add-company" class="button secondary-button">Add your company</a>
     </div>
     <h1>Company Profiles</h1>
     <div class="companies-list-wrapper">
@@ -32,10 +32,7 @@ export default {
     methods: {
         ...mapActions([
             'getCompanies'
-        ]),
-        createCompany() {
-            window.location.href = "#add-company"
-        }
+        ])
     }
 }
 </script>
