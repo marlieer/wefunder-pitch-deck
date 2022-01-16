@@ -19620,10 +19620,13 @@ var actions = {
   createPitchDeck: function createPitchDeck(_ref3) {
     var commit = _ref3.commit,
         state = _ref3.state;
-    return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/pitch-deck', _objectSpread(_objectSpread({}, state.pitchDeck), {}, {
-      id: state.company.id
-    })).then(function () {
-      return commit('clearStore');
+    var formData = new FormData();
+    formData.append("file", state.pitchDeck.file);
+    formData.append("company_id", state.company.id);
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/pitch-deck', formData, {
+      headers: {
+        'Content-type': 'multipart/form-data'
+      }
     });
   }
 };

@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         uploadFile() {
-            this.$emit('file-upload', this.$refs.pond.getFile())
+            this.$emit('file-upload', this.$refs.pond.getFile().file)
         }
     }
 }

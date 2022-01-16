@@ -34,7 +34,7 @@ var FilePond = vue_filepond__WEBPACK_IMPORTED_MODULE_0___default()((filepond_plu
   },
   methods: {
     uploadFile: function uploadFile() {
-      this.$emit('file-upload', this.$refs.pond.getFile());
+      this.$emit('file-upload', this.$refs.pond.getFile().file);
     }
   }
 });
@@ -183,27 +183,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     BaseModal: _Base_BaseModal__WEBPACK_IMPORTED_MODULE_0__["default"],
     BaseFileUploader: _Base_BaseFileUploader__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapState)({
-    'pitchDeck': function pitchDeck(state) {
-      return state.pitchDeck;
-    }
-  })),
-  methods: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapMutations)(['updatePitchDeck'])), (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)(['createCompany', 'createPitchDeck'])), {}, {
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapState)(['pitchDeck', 'company'])),
+  methods: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapMutations)(['updatePitchDeck', 'clearStore'])), (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)(['createCompany', 'createPitchDeck'])), {}, {
     updateTitle: function updateTitle(e) {
       this.updatePitchDeck(_objectSpread(_objectSpread({}, this.pitchDeck), {}, {
         title: e.target.value
       }));
     },
     updateFile: function updateFile(file) {
-      this.updatePitchDeck(_objectSpread(_objectSpread({}, this.company), {}, {
+      this.updatePitchDeck(_objectSpread(_objectSpread({}, this.pitchDeck), {}, {
         file: file
       }));
     },
     submit: function submit() {
       var _this = this;
 
-      this.createCompany().then(function (res) {
-        _this.createPitchDeck();
+      this.createCompany().then(function () {
+        return _this.createPitchDeck();
+      }).then(function () {
+        return _this.$router.push({
+          name: 'company',
+          params: {
+            id: _this.company.id
+          }
+        });
+      }).then(function () {
+        return _this.clearStore();
       });
     }
   })

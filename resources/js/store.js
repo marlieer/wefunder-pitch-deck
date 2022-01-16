@@ -59,8 +59,14 @@ const actions = {
             .then((res) => commit('updateCompany', { ...state.company, id: res.data.id }));
     },
     createPitchDeck({commit, state}) {
-        return axios.post('/api/pitch-deck', { ...state.pitchDeck, id: state.company.id})
-            .then(() => commit('clearStore'));
+        var formData = new FormData();
+        formData.append("file", state.pitchDeck.file)
+        formData.append("company_id", state.company.id)
+        return axios.post('/api/pitch-deck', formData, {
+            headers: {
+                'Content-type': 'multipart/form-data'
+            } 
+        });
     }
 }
 

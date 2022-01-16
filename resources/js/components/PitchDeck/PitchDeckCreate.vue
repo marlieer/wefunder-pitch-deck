@@ -19,18 +19,11 @@ export default {
         BaseModal, BaseFileUploader
     },
     computed: {
-        ...mapState({
-            'pitchDeck':  state => state.pitchDeck
-        })
+        ...mapState(['pitchDeck', 'company'])
     },
     methods: {
-        ...mapMutations([
-            'updatePitchDeck',
-        ]),
-        ...mapActions([
-            'createCompany',
-            'createPitchDeck'
-        ]),
+        ...mapMutations([ 'updatePitchDeck', 'clearStore' ]),
+        ...mapActions([ 'createCompany', 'createPitchDeck' ]),
         updateTitle(e) {
             this.updatePitchDeck({
                 ...this.pitchDeck,
@@ -39,15 +32,18 @@ export default {
         },
         updateFile(file) {
             this.updatePitchDeck({
-                ...this.company,
+                ...this.pitchDeck,
                 file: file
             })
         },
         submit() {
             this.createCompany()
-                .then((res) => {
-                    this.createPitchDeck()
-                })
+                .then(() => this.createPitchDeck())
+                .then(() => this.$router.push({
+                    name: 'company',
+                    params: { id: this.company.id }
+                }))
+                .then(() => this.clearStore())
         }
     }
 
