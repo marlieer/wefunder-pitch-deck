@@ -199,7 +199,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       this.createCompany().then(function () {
-        return _this.createPitchDeck();
+        return _this.createPitchDeck(_this.company.id);
       }).then(function () {
         return _this.$router.push({
           name: 'company',
@@ -500,7 +500,7 @@ var _withScopeId = function _withScopeId(n) {
 };
 
 var _hoisted_1 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Upload your pitch deck (accepts pdf or powerpoint)", -1
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Upload your pitch deck (accepts pdf)", -1
   /* HOISTED */
   );
 });

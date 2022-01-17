@@ -1,6 +1,6 @@
 <template> 
 <BaseModal name="add-pitch-deck">  
-    <h3>Upload your pitch deck (accepts pdf or powerpoint)</h3>
+    <h3>Upload your pitch deck (accepts pdf)</h3>
     <BaseFileUploader @file-upload="updateFile"></BaseFileUploader>
     <div class="footer">
         <a href="#add-company" class="button cancel-button">Back</a>
@@ -38,7 +38,7 @@ export default {
         },
         submit() {
             this.createCompany()
-                .then(() => this.createPitchDeck())
+                .then(() => this.createPitchDeck(this.company.id))
                 .then(() => this.$router.push({
                     name: 'company',
                     params: { id: this.company.id }

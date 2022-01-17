@@ -19631,12 +19631,12 @@ var actions = {
       }));
     });
   },
-  createPitchDeck: function createPitchDeck(_ref4) {
+  createPitchDeck: function createPitchDeck(_ref4, company_id) {
     var commit = _ref4.commit,
         state = _ref4.state;
     var formData = new FormData();
     formData.append("file", state.pitchDeck.file);
-    formData.append("company_id", state.company.id);
+    formData.append("company_id", company_id);
     return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/pitch-deck', formData, {
       headers: {
         'Content-type': 'multipart/form-data'

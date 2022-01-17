@@ -27,6 +27,6 @@ class Company extends Model
 
     public function pitchDeck()
     {
-        return $this->hasOne(PitchDeck::class);
+        return $this->hasOne(PitchDeck::class)->orderBy('id', 'desc');
     }
 }

@@ -70,10 +70,10 @@ const actions = {
         return axios.post('/api/company', state.company)
             .then((res) => commit('updateCompany', { ...state.company, id: res.data.id }));
     },
-    createPitchDeck({commit, state}) {
+    createPitchDeck({commit, state}, company_id) {
         var formData = new FormData();
         formData.append("file", state.pitchDeck.file)
-        formData.append("company_id", state.company.id)
+        formData.append("company_id", company_id)
         return axios.post('/api/pitch-deck', formData, {
             headers: {
                 'Content-type': 'multipart/form-data'
