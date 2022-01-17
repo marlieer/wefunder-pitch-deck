@@ -1,6 +1,7 @@
 <template> 
 <BaseModal name="add-pitch-deck">  
     <h3>Upload your pitch deck (accepts pdf)</h3>
+    <input :value="pitchDeck.title" placeholder="Title for your pitch deck" @input="updateTitle"/>
     <BaseFileUploader @file-upload="updateFile"></BaseFileUploader>
     <div class="footer">
         <a href="#add-company" class="button cancel-button">Back</a>

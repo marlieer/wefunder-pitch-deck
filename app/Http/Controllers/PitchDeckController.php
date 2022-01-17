@@ -20,7 +20,7 @@ class PitchDeckController extends Controller
     {
         $company = Company::find($request->company_id);
         $path = $request->file('file')->store('public/pitchdecks');
-        $company->pitchDeck()->save(new PitchDeck(['file' => $path]));
+        $company->pitchDeck()->save(new PitchDeck(['file' => $path, 'title' => $request->title ]));
         return response()->json(['created' => true]);
     }
 }

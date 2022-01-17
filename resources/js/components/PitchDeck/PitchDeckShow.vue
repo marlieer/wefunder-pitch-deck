@@ -1,4 +1,5 @@
 <template>
+    <p class="pitch-deck-title">{{ pitchDeck.title }}</p>
     <pdf :src="pdfdata" v-for="i in numPages" :key="i" :id="i" :page="i"
         style="width:100%;margin:20px auto;"
         :resize="true">
@@ -32,5 +33,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+p.pitch-deck-title {
+    font-size: 24px;
+}
 
 </style>

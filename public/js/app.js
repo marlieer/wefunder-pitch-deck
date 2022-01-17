@@ -19637,6 +19637,7 @@ var actions = {
     var formData = new FormData();
     formData.append("file", state.pitchDeck.file);
     formData.append("company_id", company_id);
+    formData.append("title", state.pitchDeck.title);
     return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/pitch-deck', formData, {
       headers: {
         'Content-type': 'multipart/form-data'
