@@ -1,5 +1,8 @@
 <template>
-    <pdf :src="pdfdata" v-for="i in numPages" :key="i" :id="i" :page="i"></pdf>
+    <pdf :src="pdfdata" v-for="i in numPages" :key="i" :id="i" :page="i"
+        style="width:100%;margin:20px auto;"
+        :resize="true">
+    </pdf>
 </template>
 <script>
 import pdf from 'pdfvuer'
@@ -28,3 +31,6 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+
+</style>

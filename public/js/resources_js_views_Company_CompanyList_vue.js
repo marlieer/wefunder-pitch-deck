@@ -27,8 +27,8 @@ var FilePond = vue_filepond__WEBPACK_IMPORTED_MODULE_0___default()((filepond_plu
   },
   data: function data() {
     return {
-      acceptedFileTypes: [// accepts powerpoint and pdf 
-      "application/pdf", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation"],
+      acceptedFileTypes: [// accepts pdf 
+      "application/pdf"],
       file: null
     };
   },
@@ -277,7 +277,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "file-uploader",
     ref: "pond",
     "label-idle": "Drag files here or click to choose...",
-    "label-file-type-not-allowed": "Accepted file types are powerpoint or pdf",
+    "label-file-type-not-allowed": "Acceptes pdf only",
     "accepted-file-types": $data.acceptedFileTypes,
     onAddfile: $options.uploadFile
   }, null, 8

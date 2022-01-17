@@ -5,7 +5,7 @@
         class="file-uploader"
         ref="pond"
         label-idle="Drag files here or click to choose..."
-        label-file-type-not-allowed="Accepted file types are powerpoint or pdf"
+        label-file-type-not-allowed="Acceptes pdf only"
         :accepted-file-types="acceptedFileTypes"
         @addfile="uploadFile"/>
 </div>
@@ -23,10 +23,8 @@ export default {
     },
     data() {
         return {
-            acceptedFileTypes: [    // accepts powerpoint and pdf 
+            acceptedFileTypes: [    // accepts pdf 
                 "application/pdf", 
-                "application/vnd.ms-powerpoint", 
-                "application/vnd.openxmlformats-officedocument.presentationml.presentation"
             ],
             file: null
         }

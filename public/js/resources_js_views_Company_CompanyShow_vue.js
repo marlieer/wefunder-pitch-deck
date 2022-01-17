@@ -49,8 +49,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _components_PitchDeck_PitchDeckShow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/PitchDeck/PitchDeckShow */ "./resources/js/components/PitchDeck/PitchDeckShow.vue");
+/* harmony import */ var _components_Highlights_HighlightsShow__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Highlights/HighlightsShow */ "./resources/js/components/Highlights/HighlightsShow.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -59,11 +60,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    PitchDeckShow: _components_PitchDeck_PitchDeckShow__WEBPACK_IMPORTED_MODULE_0__["default"]
+    PitchDeckShow: _components_PitchDeck_PitchDeckShow__WEBPACK_IMPORTED_MODULE_0__["default"],
+    HighlightsShow: _components_Highlights_HighlightsShow__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapState)({
     company: function company(state) {
       return state.showCompany;
     }
@@ -71,7 +74,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     this.getCompany(this.$route.params.id);
   },
-  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)(['getCompany']))
+  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)(['getCompany']))
 });
 
 /***/ }),
@@ -97,7 +100,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       src: $data.pdfdata,
       key: i,
       id: i,
-      page: i
+      page: i,
+      style: {
+        "width": "100%",
+        "margin": "20px auto"
+      },
+      resize: true
     }, null, 8
     /* PROPS */
     , ["src", "id", "page"]);
@@ -142,18 +150,27 @@ var _hoisted_1 = /*#__PURE__*/_withScopeId(function () {
 var _hoisted_2 = {
   "class": "location"
 };
+var _hoisted_3 = {
+  "class": "content-wrapper"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_PitchDeckShow = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PitchDeckShow");
+
+  var _component_HighlightsShow = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("HighlightsShow");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.company.name), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.company.location), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PitchDeckShow, {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PitchDeckShow, {
     pitchDeck: _ctx.company.pitch_deck
   }, null, 8
   /* PROPS */
-  , ["pitchDeck"])], 64
+  , ["pitchDeck"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_HighlightsShow, {
+    highlights: _ctx.company.highlights
+  }, null, 8
+  /* PROPS */
+  , ["highlights"])])], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -2195,7 +2212,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-01dff519] {\n  font-family: \"Gothic A1\", sans-serif;\n}\nh1[data-v-01dff519] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-01dff519] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-01dff519] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-01dff519] {\n  font-size: 18px;\n  color: #000000;\n}\ninput[data-v-01dff519] {\n  border: 1px solid #E5E5E5;\n  border-radius: 10px;\n  padding: 1rem;\n  font-size: 18px;\n  display: block;\n  margin: 1rem 0;\n  width: -webkit-fill-available;\n}\na[data-v-01dff519] {\n  color: #2F80ED;\n  font-size: 18px;\n  text-decoration: underline;\n}\na[data-v-01dff519]:hover {\n  color: #004097;\n}\nbutton[data-v-01dff519], a.button[data-v-01dff519] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n  text-decoration: none;\n}\nbutton[data-v-01dff519]:hover {\n  cursor: pointer;\n}\n.primary-button[data-v-01dff519] {\n  background-color: #A6C9FF;\n}\n.primary-button[data-v-01dff519]:hover {\n  background-color: #6CA7FF;\n}\n.secondary-button[data-v-01dff519] {\n  background-color: #FFDBA6;\n}\n.secondary-button[data-v-01dff519]:hover {\n  background-color: #FFC46B;\n}\n.cancel-button[data-v-01dff519] {\n  background-color: #E5E5E5;\n}\n.cancel-button[data-v-01dff519]:hover {\n  background-color: #BEBEBE;\n}\ndiv.header[data-v-01dff519] {\n  display: flex;\n  justify-content: space-between;\n  margin: 2rem;\n}\nh1[data-v-01dff519] {\n  margin-bottom: 0;\n}\np.location[data-v-01dff519] {\n  text-align: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-01dff519] {\n  font-family: \"Gothic A1\", sans-serif;\n}\nh1[data-v-01dff519] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-01dff519] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-01dff519] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-01dff519] {\n  font-size: 18px;\n  color: #000000;\n}\ninput[data-v-01dff519] {\n  border: 1px solid #E5E5E5;\n  border-radius: 10px;\n  padding: 1rem;\n  font-size: 18px;\n  display: block;\n  margin: 1rem 0;\n  width: -webkit-fill-available;\n}\na[data-v-01dff519] {\n  color: #2F80ED;\n  font-size: 18px;\n  text-decoration: underline;\n}\na[data-v-01dff519]:hover {\n  color: #004097;\n}\nbutton[data-v-01dff519], a.button[data-v-01dff519] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n  text-decoration: none;\n}\nbutton[data-v-01dff519]:hover {\n  cursor: pointer;\n}\n.primary-button[data-v-01dff519] {\n  background-color: #A6C9FF;\n}\n.primary-button[data-v-01dff519]:hover {\n  background-color: #6CA7FF;\n}\n.secondary-button[data-v-01dff519] {\n  background-color: #FFDBA6;\n}\n.secondary-button[data-v-01dff519]:hover {\n  background-color: #FFC46B;\n}\n.cancel-button[data-v-01dff519] {\n  background-color: #E5E5E5;\n}\n.cancel-button[data-v-01dff519]:hover {\n  background-color: #BEBEBE;\n}\ndiv.content-wrapper[data-v-01dff519] {\n  display: flex;\n  flex-direction: column;\n  margin: 3rem auto;\n}\ndiv.header[data-v-01dff519] {\n  display: flex;\n  justify-content: space-between;\n  margin: 2rem;\n}\nh1[data-v-01dff519] {\n  margin-bottom: 0;\n}\np.location[data-v-01dff519] {\n  text-align: center;\n}\n@media (min-width: 1440px) {\ndiv.content-wrapper[data-v-01dff519] {\n    max-width: 1400px;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -69118,6 +69135,27 @@ __webpack_require__.r(__webpack_exports__);
 	}
 });
 
+
+/***/ }),
+
+/***/ "./resources/js/components/Highlights/HighlightsShow.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/Highlights/HighlightsShow.vue ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _var_www_html_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+const script = {}
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_html_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__["default"])(script, [['__file',"resources/js/components/Highlights/HighlightsShow.vue"]])
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
 
 /***/ }),
 
