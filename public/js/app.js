@@ -19558,7 +19558,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var state = function state() {
   return {
     companies: [],
-    showCompany: {},
+    showCompany: {
+      pitch_deck: {
+        file: null
+      }
+    },
     company: {
       id: null,
       name: null,

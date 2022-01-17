@@ -5,10 +5,15 @@
     </div>
     <h1>{{ company.name }}</h1>
     <p class="location">{{ company.location }}</p>
+    <PitchDeckShow :pitchDeck="company.pitch_deck"></PitchDeckShow>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
+import PitchDeckShow from '../../components/PitchDeck/PitchDeckShow'
 export default {    
+    components: {
+        PitchDeckShow
+    },
     computed: {
         ...mapState({
             company: state => state.showCompany

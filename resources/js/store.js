@@ -4,7 +4,11 @@ import { createStore } from 'vuex'
 const state = () => {
     return {
         companies: [],
-        showCompany: {},
+        showCompany: {
+            pitch_deck: {
+                file: null
+            },
+        },
         company: {
             id: null,
             name: null,

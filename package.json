@@ -24,8 +24,8 @@
     "dependencies": {
         "filepond": "^4.30.3",
         "filepond-plugin-file-validate-type": "^1.2.6",
+        "pdfvuer": "^2.0.1",
         "vue-filepond": "^7.0.2",
-        "vue-pdf": "^4.3.0",
         "vue-router": "^4.0.12",
         "vuex": "^4.0.2"
     }
