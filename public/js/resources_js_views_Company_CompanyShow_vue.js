@@ -350,11 +350,12 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-a2d4a39e"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 
-var _hoisted_1 = {
+var _hoisted_1 = ["value"];
+var _hoisted_2 = {
   "class": "footer"
 };
 
-var _hoisted_2 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#add-company",
     "class": "button cancel-button"
@@ -374,13 +375,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Upload a new pitch deck for " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.showCompany.name) + "(accepts pdf)", 1
       /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BaseFileUploader, {
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        value: _ctx.pitchDeck.title,
+        placeholder: "Title for your pitch deck",
+        onInput: _cache[0] || (_cache[0] = function () {
+          return $options.updateTitle && $options.updateTitle.apply($options, arguments);
+        })
+      }, null, 40
+      /* PROPS, HYDRATE_EVENTS */
+      , _hoisted_1), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BaseFileUploader, {
         onFileUpload: $options.updateFile
       }, null, 8
       /* PROPS */
-      , ["onFileUpload"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , ["onFileUpload"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         "class": "primary-button",
-        onClick: _cache[0] || (_cache[0] = function ($event) {
+        onClick: _cache[1] || (_cache[1] = function ($event) {
           return $options.submit();
         })
       }, "Finish")])];
