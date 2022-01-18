@@ -6,7 +6,6 @@ use App\Models\Company;
 use App\Models\PitchDeck;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StorePitchDeckRequest;
-use App\Http\Requests\UpdatePitchDeckRequest;
 
 class PitchDeckController extends Controller
 {

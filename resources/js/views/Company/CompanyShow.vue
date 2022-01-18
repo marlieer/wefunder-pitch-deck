@@ -57,7 +57,7 @@ p.location {
 
 @media (min-width: 1440px) {
     div.content-wrapper {
-        max-width: 1400px;
+        max-width: 1000px;
     }
 }
 </style>
