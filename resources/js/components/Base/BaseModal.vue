@@ -48,6 +48,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         width: 40rem;
+        max-height: 40rem;
         background: $white;
         padding: 1rem 3rem 2rem;
         border-radius: $borderRadius;

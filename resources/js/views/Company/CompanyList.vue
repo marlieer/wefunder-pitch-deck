@@ -37,6 +37,7 @@ export default {
 }
 </script>
  <style scoped lang="scss">
+ @import '../../../sass/app.scss';
  div.top-right {
      display: flex;
      justify-content: flex-end;

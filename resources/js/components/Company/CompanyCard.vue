@@ -2,10 +2,6 @@
     <div class="company-wrapper">
         <h2>{{ company.name }}</h2>
         <p class="company-location">{{ company.location }}</p>
-        <ol>
-            <li v-for="highlight in company.highlights.slice(0,2)">{{ highlight.text }}</li>
-        </ol>
-        <p class="list-continues">... and the list goes on</p>
         <button class="primary-button" @click="goToCompany(company.id)">Learn More</button>
     </div>
 </template>

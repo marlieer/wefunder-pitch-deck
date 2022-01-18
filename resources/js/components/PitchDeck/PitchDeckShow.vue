@@ -35,6 +35,7 @@ export default {
 <style lang="scss" scoped>
 p.pitch-deck-title {
     font-size: 24px;
+    text-align:center;
 }
 
 </style>

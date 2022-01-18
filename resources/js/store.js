@@ -4,12 +4,12 @@ import { createStore } from 'vuex'
 const state = () => {
     return {
         companies: [],
-        showCompany: {
+        showCompany: {      // current company being shown
             pitch_deck: {
                 file: null
             },
         },
-        company: {
+        company: {  // company being created
             id: null,
             name: null,
             website: null,
@@ -19,7 +19,10 @@ const state = () => {
             instagram: null,
             linked_in: null
         },
-        pitchDeck: {
+        highlights: [   // highlights being created
+            null
+        ],
+        pitchDeck: {    // pitch deck bring created
             file: null,
             title: null
         },
@@ -36,9 +39,13 @@ const mutations = {
     updateCompany(state, payload) {
         state.company = payload
     },
+    updateHighlights(state, payload) {
+        state.highlights = payload
+    },
     updatePitchDeck(state, payload) {
         state.pitchDeck = payload
     },
+    // reset the store's pitchdeck and company objects
     clearStore(state) {
         state.pitchDeck = {
             file: null,
@@ -69,6 +76,12 @@ const actions = {
     createCompany({commit, state}) {
         return axios.post('/api/company', state.company)
             .then((res) => commit('updateCompany', { ...state.company, id: res.data.id }));
+    },
+    createHighlights({commit, state}) {
+        return axios.post('/api/highlights', {
+            highlights: state.highlights,
+            company_id: state.company_id
+        })
     },
     createPitchDeck({commit, state}, company_id) {
         var formData = new FormData();
