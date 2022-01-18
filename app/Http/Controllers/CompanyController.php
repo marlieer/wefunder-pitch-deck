@@ -41,7 +41,9 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
         $company->load('pitchDeck');
-        $company->pitchDeck->file = Storage::url($company->pitchDeck->file);
+        if($company->pitchDeck) {
+            $company->pitchDeck->file = Storage::url($company->pitchDeck->file);
+        }
         return response()->json($company);
     }
 }

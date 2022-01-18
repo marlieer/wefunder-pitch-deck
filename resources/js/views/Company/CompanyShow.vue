@@ -42,6 +42,7 @@ div.content-wrapper {
     display: flex;
     flex-direction: column;
     margin: 3rem auto;
+    max-width: 1000px;
 }
 div.header {
     display: flex;
@@ -53,11 +54,5 @@ h1 {
 }
 p.location {
     text-align: center;
-}
-
-@media (min-width: 1440px) {
-    div.content-wrapper {
-        max-width: 1000px;
-    }
 }
 </style>
