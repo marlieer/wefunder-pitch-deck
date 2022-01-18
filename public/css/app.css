@@ -72,6 +72,14 @@ button:hover {
   background-color: #6CA7FF;
 }
 
+.primary-button:disabled {
+  background-color: #E5E5E5;
+}
+
+.primary-button:disabled:hover {
+  cursor: default;
+}
+
 .secondary-button {
   background-color: #FFDBA6;
 }
@@ -86,6 +94,11 @@ button:hover {
 
 .cancel-button:hover {
   background-color: #BEBEBE;
+}
+
+.warning {
+  color: #e90000;
+  font-size: 14px;
 }
 div#app {
     min-height: 100vh;

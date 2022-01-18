@@ -83,21 +83,48 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     BaseModal: _Base_BaseModal__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)({
+  data: function data() {
+    return {
+      errors: {
+        name: null
+      }
+    };
+  },
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapState)({
     'company': function company(state) {
       return state.company;
     }
-  })),
+  })), {}, {
+    disabled: function disabled() {
+      return !this.company.name || this.errors.name || this.errors.location;
+    }
+  }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapMutations)(['updateCompany'])), {}, {
     updateName: function updateName(e) {
+      // simple validation
+      if (e.target.value.length > 255) {
+        this.errors.name = "Company name cannot exceed 255 characters";
+      } else {
+        this.errors.name = null;
+      }
+
       this.updateCompany(_objectSpread(_objectSpread({}, this.company), {}, {
         name: e.target.value
       }));
     },
     updateLocation: function updateLocation(e) {
+      if (e.target.value.length > 255) {
+        this.errors.location = "Location cannot exceed 255 characters";
+      } else {
+        this.errors.location = null;
+      }
+
       this.updateCompany(_objectSpread(_objectSpread({}, this.company), {}, {
         location: e.target.value
       }));
+    },
+    next: function next() {
+      window.location.href = "#add-pitch-deck";
     }
   })
 });
@@ -398,22 +425,29 @@ var _hoisted_1 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_2 = ["value"];
-var _hoisted_3 = ["value"];
+var _hoisted_3 = {
+  key: 0,
+  "class": "warning"
+};
+var _hoisted_4 = ["value"];
+var _hoisted_5 = {
+  key: 1,
+  "class": "warning"
+};
+var _hoisted_6 = {
+  "class": "footer"
+};
 
-var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "footer"
-  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_7 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "button cancel-button"
-  }, "Cancel"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: "#add-pitch-deck",
-    "class": "button primary-button"
-  }, "Next")], -1
+  }, "Cancel", -1
   /* HOISTED */
   );
 });
 
+var _hoisted_8 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_BaseModal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BaseModal");
 
@@ -426,18 +460,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         placeholder: "Company name",
         onInput: _cache[0] || (_cache[0] = function () {
           return $options.updateName && $options.updateName.apply($options, arguments);
-        })
+        }),
+        max: "255"
       }, null, 40
       /* PROPS, HYDRATE_EVENTS */
-      , _hoisted_2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      , _hoisted_2), $data.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.name), 1
+      /* TEXT */
+      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         value: _ctx.company.location,
         placeholder: "Headquarter city, state",
         onInput: _cache[1] || (_cache[1] = function () {
           return $options.updateLocation && $options.updateLocation.apply($options, arguments);
-        })
+        }),
+        max: "255"
       }, null, 40
       /* PROPS, HYDRATE_EVENTS */
-      , _hoisted_3), _hoisted_4];
+      , _hoisted_4), $data.errors.location ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.location), 1
+      /* TEXT */
+      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": "primary-button",
+        disabled: $options.disabled,
+        onClick: _cache[2] || (_cache[2] = function ($event) {
+          return $options.next();
+        })
+      }, "Next", 8
+      /* PROPS */
+      , _hoisted_8)])];
     }),
     _: 1
     /* STABLE */
@@ -783,7 +831,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-498c16ae] {\n  font-family: \"Gothic A1\", sans-serif;\n  margin: 0;\n}\nh1[data-v-498c16ae] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-498c16ae] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-498c16ae] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-498c16ae] {\n  font-size: 18px;\n  color: #000000;\n}\ninput[data-v-498c16ae] {\n  border: 1px solid #E5E5E5;\n  border-radius: 10px;\n  padding: 1rem;\n  font-size: 18px;\n  display: block;\n  margin: 1rem 0;\n  width: -webkit-fill-available;\n}\na[data-v-498c16ae] {\n  color: #2F80ED;\n  font-size: 18px;\n  text-decoration: underline;\n}\na[data-v-498c16ae]:hover {\n  color: #004097;\n}\nbutton[data-v-498c16ae], a.button[data-v-498c16ae] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n  text-decoration: none;\n}\nbutton[data-v-498c16ae]:hover {\n  cursor: pointer;\n}\n.primary-button[data-v-498c16ae] {\n  background-color: #A6C9FF;\n}\n.primary-button[data-v-498c16ae]:hover {\n  background-color: #6CA7FF;\n}\n.secondary-button[data-v-498c16ae] {\n  background-color: #FFDBA6;\n}\n.secondary-button[data-v-498c16ae]:hover {\n  background-color: #FFC46B;\n}\n.cancel-button[data-v-498c16ae] {\n  background-color: #E5E5E5;\n}\n.cancel-button[data-v-498c16ae]:hover {\n  background-color: #BEBEBE;\n}\n.close[data-v-498c16ae] {\n  position: relative;\n  top: 0;\n  right: 0;\n  width: 100%;\n  height: 100%;\n}\n.overlay[data-v-498c16ae] {\n  visibility: hidden;\n  position: fixed;\n  /* Positioning and size */\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: rgba(0, 0, 0, 0.5);\n  opacity: 0;\n  z-index: 99;\n}\n.overlay[data-v-498c16ae]:target {\n  visibility: visible;\n  opacity: 1;\n}\n.custom-modal[data-v-498c16ae] {\n  position: fixed;\n  z-index: 100;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 40rem;\n  max-height: 40rem;\n  background: #FFFFFF;\n  padding: 1rem 3rem 2rem;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.overlay .cancel[data-v-498c16ae] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-498c16ae] {\n  font-family: \"Gothic A1\", sans-serif;\n  margin: 0;\n}\nh1[data-v-498c16ae] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-498c16ae] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-498c16ae] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-498c16ae] {\n  font-size: 18px;\n  color: #000000;\n}\ninput[data-v-498c16ae] {\n  border: 1px solid #E5E5E5;\n  border-radius: 10px;\n  padding: 1rem;\n  font-size: 18px;\n  display: block;\n  margin: 1rem 0;\n  width: -webkit-fill-available;\n}\na[data-v-498c16ae] {\n  color: #2F80ED;\n  font-size: 18px;\n  text-decoration: underline;\n}\na[data-v-498c16ae]:hover {\n  color: #004097;\n}\nbutton[data-v-498c16ae], a.button[data-v-498c16ae] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n  text-decoration: none;\n}\nbutton[data-v-498c16ae]:hover {\n  cursor: pointer;\n}\n.primary-button[data-v-498c16ae] {\n  background-color: #A6C9FF;\n}\n.primary-button[data-v-498c16ae]:hover {\n  background-color: #6CA7FF;\n}\n.primary-button[data-v-498c16ae]:disabled {\n  background-color: #E5E5E5;\n}\n.primary-button[data-v-498c16ae]:disabled:hover {\n  cursor: default;\n}\n.secondary-button[data-v-498c16ae] {\n  background-color: #FFDBA6;\n}\n.secondary-button[data-v-498c16ae]:hover {\n  background-color: #FFC46B;\n}\n.cancel-button[data-v-498c16ae] {\n  background-color: #E5E5E5;\n}\n.cancel-button[data-v-498c16ae]:hover {\n  background-color: #BEBEBE;\n}\n.warning[data-v-498c16ae] {\n  color: #e90000;\n  font-size: 14px;\n}\n.close[data-v-498c16ae] {\n  position: relative;\n  top: 0;\n  right: 0;\n  width: 100%;\n  height: 100%;\n}\n.overlay[data-v-498c16ae] {\n  visibility: hidden;\n  position: fixed;\n  /* Positioning and size */\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: rgba(0, 0, 0, 0.5);\n  opacity: 0;\n  z-index: 99;\n}\n.overlay[data-v-498c16ae]:target {\n  visibility: visible;\n  opacity: 1;\n}\n.custom-modal[data-v-498c16ae] {\n  position: fixed;\n  z-index: 100;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 40rem;\n  max-height: 40rem;\n  background: #FFFFFF;\n  padding: 1rem 3rem 2rem;\n  border-radius: 10px;\n  overflow-y: auto;\n}\n.overlay .cancel[data-v-498c16ae] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -831,7 +879,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-52548a40] {\n  font-family: \"Gothic A1\", sans-serif;\n  margin: 0;\n}\nh1[data-v-52548a40] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-52548a40] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-52548a40] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-52548a40] {\n  font-size: 18px;\n  color: #000000;\n}\ninput[data-v-52548a40] {\n  border: 1px solid #E5E5E5;\n  border-radius: 10px;\n  padding: 1rem;\n  font-size: 18px;\n  display: block;\n  margin: 1rem 0;\n  width: -webkit-fill-available;\n}\na[data-v-52548a40] {\n  color: #2F80ED;\n  font-size: 18px;\n  text-decoration: underline;\n}\na[data-v-52548a40]:hover {\n  color: #004097;\n}\nbutton[data-v-52548a40], a.button[data-v-52548a40] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n  text-decoration: none;\n}\nbutton[data-v-52548a40]:hover {\n  cursor: pointer;\n}\n.primary-button[data-v-52548a40] {\n  background-color: #A6C9FF;\n}\n.primary-button[data-v-52548a40]:hover {\n  background-color: #6CA7FF;\n}\n.secondary-button[data-v-52548a40] {\n  background-color: #FFDBA6;\n}\n.secondary-button[data-v-52548a40]:hover {\n  background-color: #FFC46B;\n}\n.cancel-button[data-v-52548a40] {\n  background-color: #E5E5E5;\n}\n.cancel-button[data-v-52548a40]:hover {\n  background-color: #BEBEBE;\n}\nh2[data-v-52548a40] {\n  margin-bottom: 0;\n}\np.company-location[data-v-52548a40] {\n  margin-top: 0.2rem;\n}\np.list-continues[data-v-52548a40] {\n  text-align: center;\n  font-style: italic;\n  color: #515151;\n  position: absolute;\n  bottom: 5rem;\n  left: 6rem;\n}\ndiv.company-wrapper[data-v-52548a40] {\n  border-radius: 10px;\n  border: 1px solid #E5E5E5;\n  width: 20rem;\n  padding: 1rem 2rem 9rem;\n  margin: 1.8rem 1.5rem;\n  box-shadow: 0 5px 11px rgba(36, 37, 38, 0.08);\n  position: relative;\n}\nbutton[data-v-52548a40] {\n  margin: auto;\n  display: flex;\n  position: absolute;\n  bottom: 2rem;\n  left: 6.5rem;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-52548a40] {\n  font-family: \"Gothic A1\", sans-serif;\n  margin: 0;\n}\nh1[data-v-52548a40] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-52548a40] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-52548a40] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-52548a40] {\n  font-size: 18px;\n  color: #000000;\n}\ninput[data-v-52548a40] {\n  border: 1px solid #E5E5E5;\n  border-radius: 10px;\n  padding: 1rem;\n  font-size: 18px;\n  display: block;\n  margin: 1rem 0;\n  width: -webkit-fill-available;\n}\na[data-v-52548a40] {\n  color: #2F80ED;\n  font-size: 18px;\n  text-decoration: underline;\n}\na[data-v-52548a40]:hover {\n  color: #004097;\n}\nbutton[data-v-52548a40], a.button[data-v-52548a40] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n  text-decoration: none;\n}\nbutton[data-v-52548a40]:hover {\n  cursor: pointer;\n}\n.primary-button[data-v-52548a40] {\n  background-color: #A6C9FF;\n}\n.primary-button[data-v-52548a40]:hover {\n  background-color: #6CA7FF;\n}\n.primary-button[data-v-52548a40]:disabled {\n  background-color: #E5E5E5;\n}\n.primary-button[data-v-52548a40]:disabled:hover {\n  cursor: default;\n}\n.secondary-button[data-v-52548a40] {\n  background-color: #FFDBA6;\n}\n.secondary-button[data-v-52548a40]:hover {\n  background-color: #FFC46B;\n}\n.cancel-button[data-v-52548a40] {\n  background-color: #E5E5E5;\n}\n.cancel-button[data-v-52548a40]:hover {\n  background-color: #BEBEBE;\n}\n.warning[data-v-52548a40] {\n  color: #e90000;\n  font-size: 14px;\n}\nh2[data-v-52548a40] {\n  margin-bottom: 0;\n}\np.company-location[data-v-52548a40] {\n  margin-top: 0.2rem;\n}\np.list-continues[data-v-52548a40] {\n  text-align: center;\n  font-style: italic;\n  color: #515151;\n  position: absolute;\n  bottom: 5rem;\n  left: 6rem;\n}\ndiv.company-wrapper[data-v-52548a40] {\n  border-radius: 10px;\n  border: 1px solid #E5E5E5;\n  width: 20rem;\n  padding: 1rem 2rem 9rem;\n  margin: 1.8rem 1.5rem;\n  box-shadow: 0 5px 11px rgba(36, 37, 38, 0.08);\n  position: relative;\n}\nbutton[data-v-52548a40] {\n  margin: auto;\n  display: flex;\n  position: absolute;\n  bottom: 2rem;\n  left: 6.5rem;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -903,7 +951,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-6647123a] {\n  font-family: \"Gothic A1\", sans-serif;\n  margin: 0;\n}\nh1[data-v-6647123a] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-6647123a] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-6647123a] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-6647123a] {\n  font-size: 18px;\n  color: #000000;\n}\ninput[data-v-6647123a] {\n  border: 1px solid #E5E5E5;\n  border-radius: 10px;\n  padding: 1rem;\n  font-size: 18px;\n  display: block;\n  margin: 1rem 0;\n  width: -webkit-fill-available;\n}\na[data-v-6647123a] {\n  color: #2F80ED;\n  font-size: 18px;\n  text-decoration: underline;\n}\na[data-v-6647123a]:hover {\n  color: #004097;\n}\nbutton[data-v-6647123a], a.button[data-v-6647123a] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n  text-decoration: none;\n}\nbutton[data-v-6647123a]:hover {\n  cursor: pointer;\n}\n.primary-button[data-v-6647123a] {\n  background-color: #A6C9FF;\n}\n.primary-button[data-v-6647123a]:hover {\n  background-color: #6CA7FF;\n}\n.secondary-button[data-v-6647123a] {\n  background-color: #FFDBA6;\n}\n.secondary-button[data-v-6647123a]:hover {\n  background-color: #FFC46B;\n}\n.cancel-button[data-v-6647123a] {\n  background-color: #E5E5E5;\n}\n.cancel-button[data-v-6647123a]:hover {\n  background-color: #BEBEBE;\n}\ndiv.top-right[data-v-6647123a] {\n  display: flex;\n  justify-content: flex-end;\n  margin: 2rem;\n}\ndiv.companies-list-wrapper[data-v-6647123a] {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  margin: auto;\n}\n@media (min-width: 1440px) {\ndiv.companies-list-wrapper[data-v-6647123a] {\n    max-width: 1400px;\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-6647123a] {\n  font-family: \"Gothic A1\", sans-serif;\n  margin: 0;\n}\nh1[data-v-6647123a] {\n  font-size: 48px;\n  color: #515151;\n  text-align: center;\n  text-transform: uppercase;\n  letter-spacing: 0.14em;\n}\nh2[data-v-6647123a] {\n  font-size: 30px;\n  color: #515151;\n  text-transform: uppercase;\n  font-weight: 400;\n}\nh3[data-v-6647123a] {\n  font-size: 36px;\n  color: #000000;\n  font-weight: 400;\n}\np[data-v-6647123a] {\n  font-size: 18px;\n  color: #000000;\n}\ninput[data-v-6647123a] {\n  border: 1px solid #E5E5E5;\n  border-radius: 10px;\n  padding: 1rem;\n  font-size: 18px;\n  display: block;\n  margin: 1rem 0;\n  width: -webkit-fill-available;\n}\na[data-v-6647123a] {\n  color: #2F80ED;\n  font-size: 18px;\n  text-decoration: underline;\n}\na[data-v-6647123a]:hover {\n  color: #004097;\n}\nbutton[data-v-6647123a], a.button[data-v-6647123a] {\n  border-radius: 15px;\n  color: #000000;\n  padding: 0.7rem 2rem;\n  font-weight: bold;\n  font-family: \"Gothic A1\";\n  border: none;\n  font-size: 18px;\n  text-decoration: none;\n}\nbutton[data-v-6647123a]:hover {\n  cursor: pointer;\n}\n.primary-button[data-v-6647123a] {\n  background-color: #A6C9FF;\n}\n.primary-button[data-v-6647123a]:hover {\n  background-color: #6CA7FF;\n}\n.primary-button[data-v-6647123a]:disabled {\n  background-color: #E5E5E5;\n}\n.primary-button[data-v-6647123a]:disabled:hover {\n  cursor: default;\n}\n.secondary-button[data-v-6647123a] {\n  background-color: #FFDBA6;\n}\n.secondary-button[data-v-6647123a]:hover {\n  background-color: #FFC46B;\n}\n.cancel-button[data-v-6647123a] {\n  background-color: #E5E5E5;\n}\n.cancel-button[data-v-6647123a]:hover {\n  background-color: #BEBEBE;\n}\n.warning[data-v-6647123a] {\n  color: #e90000;\n  font-size: 14px;\n}\ndiv.top-right[data-v-6647123a] {\n  display: flex;\n  justify-content: flex-end;\n  margin: 2rem;\n}\ndiv.companies-list-wrapper[data-v-6647123a] {\n  display: flex;\n  justify-content: center;\n  flex-wrap: wrap;\n  margin: auto;\n}\n@media (min-width: 1440px) {\ndiv.companies-list-wrapper[data-v-6647123a] {\n    max-width: 1400px;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

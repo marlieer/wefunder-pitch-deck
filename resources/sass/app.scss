@@ -19,6 +19,7 @@ $darkGrey: #515151;
 $overlay: rgba(0,0,0,0.50);
 $boxShadow: 0 5px 11px rgba(36, 37, 38, 0.08); 
 $borderRadius: 10px;
+$red: #e90000;
 
 // global styles
 body {
@@ -83,6 +84,12 @@ button:hover {
 .primary-button:hover {
     background-color:$darkBlue;
 }
+.primary-button:disabled {
+    background-color: $lightGrey;
+}
+.primary-button:disabled:hover {
+    cursor: default
+}
 .secondary-button {
     background-color: $lightOrange;
 }
@@ -94,4 +101,9 @@ button:hover {
 }
 .cancel-button:hover {
     background-color:$medGrey;
+}
+
+.warning {
+    color: $red;
+    font-size: 14px;
 }
