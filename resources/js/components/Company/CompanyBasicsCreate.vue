@@ -24,7 +24,8 @@ export default {
     data() {
         return {
             errors: {
-                name: null
+                name: null,
+                location: null,
             }
         }
     },
@@ -42,22 +43,15 @@ export default {
         ]),
         updateName(e) {
             // simple validation
-            if(e.target.value.length > 255) {
-                this.errors.name = "Company name cannot exceed 255 characters"
-            } else {
-                this.errors.name = null
-            }
+            this.errors.name = e.target.value.length > 255 ? "Company name cannot exceed 255 characters" : null
             this.updateCompany({
                 ...this.company,
                 name: e.target.value
             })
         },
         updateLocation(e) {
-            if(e.target.value.length > 255) {
-                this.errors.location = "Location cannot exceed 255 characters"
-            } else {
-                this.errors.location = null
-            }
+            //simple validation
+            this.errors.location = e.target.value.length > 255 ? "Location cannot exceed 255 characters": null
             this.updateCompany({
                 ...this.company,
                 location: e.target.value

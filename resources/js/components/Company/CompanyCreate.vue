@@ -2,7 +2,7 @@
     <div>
         <CompanyBasicsCreate></CompanyBasicsCreate>
         <HighlightsCreate></HighlightsCreate>
-        <PitchDeckCreate></PitchDeckCreate>
+        <PitchDeckCreate :isCreate="true"></PitchDeckCreate>
     </div>
 </template>
 <script>

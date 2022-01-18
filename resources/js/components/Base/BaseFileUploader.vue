@@ -6,8 +6,11 @@
         ref="pond"
         label-idle="Drag files here or click to choose..."
         label-file-type-not-allowed="Acceptes pdf only"
+        :allowMultiple="false"
         :accepted-file-types="acceptedFileTypes"
-        @addfile="uploadFile"/>
+        @addfile="addFile"
+        @removefile="$emit('removefile')"
+        @error="throwError()"/>
 </div>
 </template>
 <script>
@@ -26,12 +29,22 @@ export default {
             acceptedFileTypes: [    // accepts pdf 
                 "application/pdf", 
             ],
-            file: null
+            file: null,
+            errors: false,
         }
     },
     methods: {
-        uploadFile() {
-            this.$emit('file-upload', this.$refs.pond.getFile().file)
+        addFile() {
+            // only add the file if there are no errors
+            if(!this.errors) {
+                this.$emit('addfile', this.$refs.pond.getFile().file)
+            }
+            // reset errors
+            this.errors = false
+        },
+        throwError() {
+            this.errors = true
+            this.$emit('removefile')
         }
     }
 }

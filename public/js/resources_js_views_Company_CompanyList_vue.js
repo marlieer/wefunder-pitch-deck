@@ -29,12 +29,23 @@ var FilePond = vue_filepond__WEBPACK_IMPORTED_MODULE_0___default()((filepond_plu
     return {
       acceptedFileTypes: [// accepts pdf 
       "application/pdf"],
-      file: null
+      file: null,
+      errors: false
     };
   },
   methods: {
-    uploadFile: function uploadFile() {
-      this.$emit('file-upload', this.$refs.pond.getFile().file);
+    addFile: function addFile() {
+      // only add the file if there are no errors
+      if (!this.errors) {
+        this.$emit('addfile', this.$refs.pond.getFile().file);
+      } // reset errors
+
+
+      this.errors = false;
+    },
+    throwError: function throwError() {
+      this.errors = true;
+      this.$emit('removefile');
     }
   }
 });
@@ -86,7 +97,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       errors: {
-        name: null
+        name: null,
+        location: null
       }
     };
   },
@@ -102,23 +114,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapMutations)(['updateCompany'])), {}, {
     updateName: function updateName(e) {
       // simple validation
-      if (e.target.value.length > 255) {
-        this.errors.name = "Company name cannot exceed 255 characters";
-      } else {
-        this.errors.name = null;
-      }
-
+      this.errors.name = e.target.value.length > 255 ? "Company name cannot exceed 255 characters" : null;
       this.updateCompany(_objectSpread(_objectSpread({}, this.company), {}, {
         name: e.target.value
       }));
     },
     updateLocation: function updateLocation(e) {
-      if (e.target.value.length > 255) {
-        this.errors.location = "Location cannot exceed 255 characters";
-      } else {
-        this.errors.location = null;
-      }
-
+      //simple validation
+      this.errors.location = e.target.value.length > 255 ? "Location cannot exceed 255 characters" : null;
       this.updateCompany(_objectSpread(_objectSpread({}, this.company), {}, {
         location: e.target.value
       }));
@@ -253,9 +256,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     BaseModal: _Base_BaseModal__WEBPACK_IMPORTED_MODULE_0__["default"],
     BaseFileUploader: _Base_BaseFileUploader__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapState)(['pitchDeck', 'company'])),
+  props: ['isCreate' // creating new pitch deck? Otherwise it'll be updating
+  ],
+  data: function data() {
+    return {
+      errors: {
+        title: null
+      }
+    };
+  },
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapState)(['pitchDeck', 'company', 'showCompany'])), {}, {
+    disabled: function disabled() {
+      return !this.pitchDeck.file || this.errors.title;
+    }
+  }),
   methods: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapMutations)(['updatePitchDeck', 'clearStore'])), (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)(['createCompany', 'createPitchDeck'])), {}, {
     updateTitle: function updateTitle(e) {
+      // simple validation
+      this.errors.title = e.target.value.length > 255 ? "Pitch deck title cannot exceed 255 characters" : null;
       this.updatePitchDeck(_objectSpread(_objectSpread({}, this.pitchDeck), {}, {
         title: e.target.value
       }));
@@ -266,6 +284,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }));
     },
     submit: function submit() {
+      if (this.isCreate) {
+        this.create();
+      } else {
+        this.update();
+      }
+    },
+    create: function create() {
       var _this = this;
 
       this.createCompany().then(function () {
@@ -279,6 +304,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       }).then(function () {
         return _this.clearStore();
+      });
+    },
+    update: function update() {
+      this.createPitchDeck(this.showCompany.id).then(function () {
+        window.location.href = "#"; // close modal
+
+        window.location.reload();
       });
     }
   })
@@ -348,8 +380,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ref: "pond",
     "label-idle": "Drag files here or click to choose...",
     "label-file-type-not-allowed": "Acceptes pdf only",
+    allowMultiple: false,
     "accepted-file-types": $data.acceptedFileTypes,
-    onAddfile: $options.uploadFile
+    onAddfile: $options.addFile,
+    onRemovefile: _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.$emit('removefile');
+    }),
+    onError: _cache[1] || (_cache[1] = function ($event) {
+      return $options.throwError();
+    })
   }, null, 8
   /* PROPS */
   , ["accepted-file-types", "onAddfile"])]);
@@ -554,7 +593,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_PitchDeckCreate = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PitchDeckCreate");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CompanyBasicsCreate), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_HighlightsCreate), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PitchDeckCreate)]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CompanyBasicsCreate), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_HighlightsCreate), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PitchDeckCreate, {
+    isCreate: true
+  })]);
 }
 
 /***/ }),
@@ -651,26 +692,31 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-11d5c4e4"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 
-var _hoisted_1 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Upload your pitch deck (accepts pdf)", -1
-  /* HOISTED */
-  );
-});
-
-var _hoisted_2 = ["value"];
-var _hoisted_3 = {
+var _hoisted_1 = {
+  key: 0
+};
+var _hoisted_2 = {
+  key: 1
+};
+var _hoisted_3 = ["value"];
+var _hoisted_4 = {
+  key: 2,
+  "class": "warning"
+};
+var _hoisted_5 = {
   "class": "footer"
 };
-
-var _hoisted_4 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: "#add-company",
-    "class": "button cancel-button"
-  }, "Back", -1
-  /* HOISTED */
-  );
-});
-
+var _hoisted_6 = {
+  key: 0,
+  href: "#add-company",
+  "class": "button cancel-button"
+};
+var _hoisted_7 = {
+  key: 1,
+  href: "#",
+  "class": "button cancel-button"
+};
+var _hoisted_8 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_BaseFileUploader = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BaseFileUploader");
 
@@ -680,7 +726,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "add-pitch-deck"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      return [$props.isCreate ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_1, "Upload your pitch deck (accepts pdf)")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_2, "Upload a new pitch deck for " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.showCompany.name) + " (accepts pdf)", 1
+      /* TEXT */
+      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         value: _ctx.pitchDeck.title,
         placeholder: "Title for your pitch deck",
         onInput: _cache[0] || (_cache[0] = function () {
@@ -688,16 +736,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 40
       /* PROPS, HYDRATE_EVENTS */
-      , _hoisted_2), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BaseFileUploader, {
-        onFileUpload: $options.updateFile
+      , _hoisted_3), $data.errors.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.title), 1
+      /* TEXT */
+      )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BaseFileUploader, {
+        onAddfile: $options.updateFile,
+        onRemovefile: _cache[1] || (_cache[1] = function ($event) {
+          return $options.updateFile(null);
+        })
       }, null, 8
       /* PROPS */
-      , ["onFileUpload"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      , ["onAddfile"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [$props.isCreate ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_6, "Back")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_7, "Cancel")), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         "class": "primary-button",
-        onClick: _cache[1] || (_cache[1] = function ($event) {
+        onClick: _cache[2] || (_cache[2] = function ($event) {
           return $options.submit();
-        })
-      }, "Finish")])];
+        }),
+        disabled: $options.disabled
+      }, "Finish", 8
+      /* PROPS */
+      , _hoisted_8)])];
     }),
     _: 1
     /* STABLE */

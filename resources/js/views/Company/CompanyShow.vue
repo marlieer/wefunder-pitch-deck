@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <a href="/">Back to company profiles</a>
-        <a href="#update-pitch-deck" class="button secondary-button">Upload a new pitch deck</a>
+        <a href="#add-pitch-deck" class="button secondary-button">Upload a new pitch deck</a>
     </div>
     <h1>{{ company.name }}</h1>
     <p class="location">{{ company.location }}</p>
@@ -9,18 +9,18 @@
         <PitchDeckShow :pitchDeck="company.pitch_deck"></PitchDeckShow>
         <HighlightsShow :highlights="company.highlights"></HighlightsShow>
     </div>
-    <PitchDeckUpdate></PitchDeckUpdate>
+    <PitchDeckCreate :isCreate="false"></PitchDeckCreate>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
 import PitchDeckShow from '../../components/PitchDeck/PitchDeckShow'
-import PitchDeckUpdate from '../../components/PitchDeck/PitchDeckUpdate'
+import PitchDeckCreate from '../../components/PitchDeck/PitchDeckCreate'
 import HighlightsShow from '../../components/Highlights/HighlightsShow'
 export default {    
     components: {
         PitchDeckShow,
         HighlightsShow,
-        PitchDeckUpdate
+        PitchDeckCreate
     },
     computed: {
         ...mapState({
