@@ -21,7 +21,7 @@ This project was coded with Laravel 8 and Vue 3. To set up, first clone the proj
 8. Make the application key: `sail artisan key:generate`
 
 ## Figma Design
-The design for this project can be found [here](https://www.figma.com/file/n6FC7HqLQoqOs1tzlQmc63/Pitch-Deck?node-id=0%3A1) and the interactive design prototyp can be found [here](https://www.figma.com/proto/n6FC7HqLQoqOs1tzlQmc63/Pitch-Deck?node-id=2%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=2%3A2). Not all of the design was implemented since the scope of the project was simply to implement a file uploader to display pitch decks.
+The design for this project can be found [here](https://www.figma.com/file/n6FC7HqLQoqOs1tzlQmc63/Pitch-Deck?node-id=0%3A1) and the interactive design prototype can be found [here](https://www.figma.com/proto/n6FC7HqLQoqOs1tzlQmc63/Pitch-Deck?node-id=2%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=2%3A2). Not all of the design was implemented since the scope of the project was simply to implement a file uploader to display pitch decks.
 
 ## License
 
